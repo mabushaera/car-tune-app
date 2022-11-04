@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+      
+  <head>
+    <title>Car Tuning Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+  </head>
+  
+  <body>
+  	<h1>Design your Tune!</h1>
+  	<img th:src="@{/images/CarTuningCloud.png}"/>
+  	
+  	<form method="POST" th:action="@{/logout}" id="logoutForm">
+      <input type="submit" value="Logout"/>
+    </form>
+  	
+  	<form method="POST" th:object="${tune}" th:action="@{/design}" id="tacoForm">
+	 <div class="grid">
+		<div class="ingredient-group" id="engine">
+		      <h3>Tune your Engine:</h3>
+		      <div th:each="tuningSelection : ${engine}">
+			        <input th:field="*{tuningSelection}" type="checkbox" 
+			               th:value="${tuningSelection.id}"/>
+			        <span th:text="${tuningSelection.name}">TUNINGSELECTION</span><br/>
+			  </div>
+        </div>
+        
+        <!-- -->
+        <div class="ingredient-group" id="suspension">
+		      <h3>Tune your Suspension:</h3>
+		      <div th:each="tuningSelection : ${suspension}">
+			        <input th:field="*{tuningSelection}" type="checkbox" 
+			               th:value="${tuningSelection.id}"/>
+			        <span th:text="${tuningSelection.name}">TUNINGSELECTION</span><br/>
+			  </div>
+        </div>  
+        <!--  -->
+        
+        <!-- -->
+        <div class="ingredient-group" id="body">
+		      <h3>Tune your Body:</h3>
+		      <div th:each="tuningSelection : ${body}">
+			        <input th:field="*{tuningSelection}" type="checkbox" 
+			               th:value="${tuningSelection.id}"/>
+			        <span th:text="${tuningSelection.name}">TUNINGSELECTION</span><br/>
+			  </div>
+        </div>  
+        <!--  -->
+        
+        <!-- -->
+        <div class="ingredient-group" id="interior">
+		      <h3>Tune your Interior:</h3>
+		      <div th:each="tuningSelection : ${interior}">
+			        <input th:field="*{tuningSelection}" type="checkbox" 
+			               th:value="${tuningSelection.id}"/>
+			        <span th:text="${tuningSelection.name}">TUNINGSELECTION</span><br/>
+			  </div>
+        </div>  
+        <!--  -->          		 
+	 </div>
+	 
+	 <dev>
+	 	<h3>Name your tune creation:</h3>
+     	<input type="text" th:field="*{name}"/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp     		 
+     	add notes: <input type="text" th:field="*{notes}"/>
+     	
+     	<span class="validationError"
+            th:if="${#fields.hasErrors('name')}"
+            th:errors="*{name}">Name Error</span>
+      <br/>
+      
+	 	<button>Submit Your tune</button>	 	
+      </div>
+  	</form>
+  </body>
+        
+</html>      

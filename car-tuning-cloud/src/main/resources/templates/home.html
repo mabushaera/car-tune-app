@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Car Tuning Cloud</title>
+  </head>
+  
+  <body>
+    <h1>Welcome to Timothy Design</h1>
+    <img th:src="@{/images/CarTuningCloud.png}"/>
+    </br>
+    
+    <form method="POST" th:action="@{/logout}" id="logoutForm">
+      <input type="submit" value="Logout"/>
+    </form>
+    
+    </br>
+    <a th:href="@{/design}" id="design">Design a Tune</a> 
+    
+  </body>
+</html>
